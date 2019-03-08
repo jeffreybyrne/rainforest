@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from rainforest.views import homepage, productpage, root
+from rainforest.views import homepage, productpage, root, new_product
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', homepage, name='homepage'),
     path('product/<int:id>', productpage, name='productpage'),
-    path('', root)
+    path('', root),
+    path('newproduct/', new_product, name="newproduct")
 ]

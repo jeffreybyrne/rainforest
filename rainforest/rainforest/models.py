@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 
 class Product(models.Model):
     name = models.CharField(max_length=255)

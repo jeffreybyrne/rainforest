@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from rainforest.models import Product
+from rainforest.forms import ProductForm
 
 
 def homepage(request):
@@ -18,3 +19,9 @@ def productpage(request, id):
 
 def root(request):
     return HttpResponseRedirect('home')
+
+def new_product(request):
+    new_form = ProductForm()
+    context = {'form': new_form}
+    response = render(request, 'newproduct.html', context)
+    return HttpResponse(response)
