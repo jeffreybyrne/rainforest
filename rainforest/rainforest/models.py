@@ -14,3 +14,9 @@ class Product(models.Model):
     def price_in_dollars(self):
         dollars = self.price / 100
         return "${:.2f}".format(dollars)
+
+
+class Review(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    comment = models.TextField()
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
