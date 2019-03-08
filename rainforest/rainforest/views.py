@@ -14,3 +14,7 @@ def productpage(request, id):
     context = {'product': product}
     response = render(request, 'product.html', context)
     return HttpResponse(response)
+
+
+def root(request):
+    return HttpResponseRedirect('home')
