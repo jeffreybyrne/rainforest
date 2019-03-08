@@ -7,3 +7,10 @@ def homepage(request):
     context = {'products': Product.objects.all()}
     response = render(request, 'index.html', context)
     return HttpResponse(response)
+
+
+def productpage(request, id):
+    product = Product.objects.get(pk=id)
+    context = {'product': product}
+    response = render(request, 'product.html', context)
+    return HttpResponse(response)
