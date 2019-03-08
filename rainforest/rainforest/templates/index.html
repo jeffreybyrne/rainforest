@@ -3,6 +3,6 @@
 
 {% for product in products%}
 <h1><a href="{% url 'productpage' id=product.pk %}">{{product.name}}</a></h1>
-<p>{{product.price_in_dollars}} {{product.description}}</p>
+<p>{{product.price_in_dollars}} | {{product.description}} | Comments: {{product.reviews.count}}</p>
 {% endfor %}
 {% endblock %}
