@@ -20,3 +20,6 @@ class Review(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     comment = models.TextField()
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
+
+    def __str__(self):
+        return "Comment: {} At: {} ".format(self.comment, self.created_at)

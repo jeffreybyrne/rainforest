@@ -5,4 +5,9 @@
 <p>Price: {{ product.price_in_dollars }}</p>
 <p>Description: {{ product.description }}</p>
 <p><a href="{% url 'edit_product' id=product.pk %}">Edit</a></p>
+<ul>
+  {% for review in product.reviews.all %}
+  <li>{{review}}</li>
+  {% endfor %}
+</ul>
 {% endblock %}
