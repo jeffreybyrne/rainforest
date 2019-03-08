@@ -10,6 +10,12 @@
 
 </form>
 
-<p><a href="{% url 'productpage' id=id %}">Return to Product</a></p>
 
+<form action="{% url 'delete_product' id=id %}" method="post">
+  {% csrf_token %}
+  <button type="submit" name="button">Delete Product</button>
+</form>
+
+
+<p><a href="{% url 'productpage' id=id %}">Return to Product</a></p>
 {% endblock %}

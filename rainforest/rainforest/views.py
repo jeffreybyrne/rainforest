@@ -30,7 +30,7 @@ def create_product(request):
         form = ProductForm(request.POST)
         if form.is_valid():
             new_product = form.save()
-            return HttpResponseRedirect('/product/' +str(new_product.pk))
+            return HttpResponseRedirect('/products/' +str(new_product.pk))
         else:
             print(form.errors)
     else:
@@ -63,16 +63,6 @@ def update_product(request, id):
         form = ProductForm(instance=product)
     return render(request, 'products/' + str(id) + '/edit/', {'form': form})
 
-# def post_edit_product(request, id):
-#     product = get_object_or_404(Product, pk=id)
-#     product.name = request.POST['name']
-#     product.price = request.POST['price']
-#     product.description = request.POST['description']
-#     product.save()
-#
-#
-#     product = get_object_or_404(Product, pk=id)
-#     new_form = ProductForm(instance=product)
-#     context = {'form': new_form}
-#     response = render(request, 'editproduct.html', context)
-#     return HttpResponse(response)
+def delete_product(request, id):
+    Product.objects.get(pk=id).delete()
+    return HttpResponseRedirect('/home/')
