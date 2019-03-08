@@ -10,4 +10,10 @@
   <li>{{review}}</li>
   {% endfor %}
 </ul>
+<form action="{% url 'create_review'%}" method="post">
+  {% csrf_token %}
+
+  {{form.as_p}}
+
+<button type="submit" name="button">Submit</button>
 {% endblock %}

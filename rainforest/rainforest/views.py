@@ -66,3 +66,6 @@ def update_product(request, id):
 def delete_product(request, id):
     Product.objects.get(pk=id).delete()
     return HttpResponseRedirect('/home/')
+
+def create_review(request):
+    pass
