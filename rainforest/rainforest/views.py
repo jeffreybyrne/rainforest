@@ -25,3 +25,15 @@ def new_product(request):
     context = {'form': new_form}
     response = render(request, 'newproduct.html', context)
     return HttpResponse(response)
+
+def create_product(request):
+    if request.method == "POST":
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            new_product = form.save()
+            return HttpResponseRedirect('/product/' +str(new_product.pk))
+        else:
+            print(form.errors)
+    else:
+        form = ProductForm()
+    return render(request, 'newproduct.html', {'form': form})
